@@ -1,3 +1,4 @@
+// C++ solution
 //Horizontal scanning version
 class Solution {
 public:
@@ -16,6 +17,7 @@ public:
     }
 };
 
+// C++ solution
 //Devide and conquer version
 class Solution {
 public:
@@ -46,3 +48,22 @@ public:
         return left_LCP;
     }
 };
+
+// C solution
+char * longestCommonPrefix(char ** strs, int strsSize){
+    
+    if(strsSize <= 0)
+        return "";
+    
+    char *temp = strs[0];
+    for(int i = 1; i < strsSize; i++)
+    {
+        int j = 0;
+        while(temp[j] && strs[i][j] && temp[j] == strs[i][j])
+            j++;
+        
+        temp[j] = '\0';
+    }
+    
+    return temp;
+}
