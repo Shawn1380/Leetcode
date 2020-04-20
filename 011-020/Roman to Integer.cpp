@@ -1,3 +1,4 @@
+// C++ solution
 class Solution {
 public:
     int romanToInt(string s) {
@@ -14,3 +15,51 @@ public:
         return sum;
     }
 };
+
+// C solution
+int char2value(char c){
+    int value = 0;
+    switch(c)
+    {
+        case 'I': 
+            value = 1;
+            break;
+        case 'V': 
+            value = 5;
+            break;
+        case 'X': 
+            value = 10;
+            break;
+        case 'L': 
+            value = 50;
+            break;
+        case 'C': 
+            value = 100;
+            break;
+        case 'D': 
+            value = 500;
+            break;
+        case 'M': 
+            value = 1000;
+            break;
+    }
+    return value;
+}
+
+int romanToInt(char * s){
+    int sum = 0, i = 0;
+    while(s[i] != '\0')
+    {
+        if(char2value(s[i]) >= char2value(s[i + 1]) || s[i + 1] == '\0')
+        {
+            sum = sum + char2value(s[i]);
+            i = i + 1;
+        }
+        else
+        {
+            sum = sum - char2value(s[i]) + char2value(s[i + 1]);
+            i = i + 2;
+        }
+    }
+    return sum;
+}
